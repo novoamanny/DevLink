@@ -1,11 +1,15 @@
 const express = require('express');
 const connectDB = require('./config/db');
+const bodyParser = require('body-parser');
 
 
 
 const app = express();
 
 connectDB();
+
+// Init Malware
+app.use(express.json({extended: false}));
 
 
 
