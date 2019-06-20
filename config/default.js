@@ -1,3 +1,4 @@
 module.exports = {
-    mongoURI: 'mongodb://novoamanny:novoa214@ds119306.mlab.com:19306/dev-link'
+    mongoURI: 'mongodb://novoa:novoa214@ds023480.mlab.com:23480/devlinknovoa',
+    jwtSecret: 'secret'
 }
