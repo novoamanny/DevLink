@@ -8,21 +8,20 @@ const router = express.Router();
 const User = require('../../models/User');
 const keys = require('../../config/default');
 
+const validateLoginInput = require('../../validation/login');
 
-<<<<<<< HEAD
-// @route GET api/auth
-// @desc Test route
+
+// @route POST api/auth/login
+// @desc Login route
 // @access Public
-=======
->>>>>>> f3efdd5aa32de4d800e72784206b3a484e30ad1a
 
-router.post('/', (req, res) => {
-    // const {errors, isValid} = validateLoginInput(req.body);
+router.post('/login', (req, res) => {
+    const {errors, isValid} = validateLoginInput(req.body);
 
-    // // check Validation
-    // if(!isValid){
-    //     return res.status(400).json(errors);
-    // }
+    // check Validation
+    if(!isValid){
+        return res.status(400).json(errors);
+    }
 
     const {email, password} = req.body;
     
