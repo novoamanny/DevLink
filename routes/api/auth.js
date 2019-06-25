@@ -9,9 +9,12 @@ const User = require('../../models/User');
 const keys = require('../../config/default');
 
 
+<<<<<<< HEAD
 // @route GET api/auth
 // @desc Test route
 // @access Public
+=======
+>>>>>>> f3efdd5aa32de4d800e72784206b3a484e30ad1a
 
 router.post('/', (req, res) => {
     // const {errors, isValid} = validateLoginInput(req.body);
