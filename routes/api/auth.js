@@ -12,7 +12,7 @@ const keys = require('../../config/default');
 // @route GET api/auth
 // @desc Test route
 // @access Public
-router.get('/', (req, res) => res.send('Auth route...'));
+
 router.post('/', (req, res) => {
     // const {errors, isValid} = validateLoginInput(req.body);
 
