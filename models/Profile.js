@@ -9,7 +9,7 @@ const ProfileSchema = new Schema({
     },
     handle: {
         type: String,
-        required: true,
+        required: false,
         max: 40
     },
     company: {
@@ -23,7 +23,7 @@ const ProfileSchema = new Schema({
     },
     status:{
         type : String,
-        required: true
+        required: false
     },
     skills:{
         type: [String],
