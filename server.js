@@ -10,6 +10,7 @@ connectDB();
 
 // Init Malware
 app.use(express.json({extended: false}));
+app.use(bodyParser.json());
 
 
 
