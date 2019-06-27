@@ -86,7 +86,8 @@ router.post(
 
     // Build profile object
     const profileFields = {};
-    profileFields.user = req.user.id;
+    profileFields.User = req.user.id;
+    
     if (company) profileFields.company = company;
     if (website) profileFields.website = website;
     if (location) profileFields.location = location;
@@ -105,13 +106,18 @@ router.post(
     if (linkedin) profileFields.social.linkedin = linkedin;
     if (instagram) profileFields.social.instagram = instagram;
 
-    try {
-      let profile = await Profile.findOne({ user: req.user.id });
+   
 
+    try {
+      let profile = await Profile.findOne({ User: req.user.id });
+      
+      console.log(req.user.id)
+      
       if (profile) {
+        console.log('found profile')
         // Update
         profile = await Profile.findOneAndUpdate(
-          { user: req.user.id },
+          { User: req.user.id },
           { $set: profileFields },
           { new: true }
         );
@@ -119,11 +125,19 @@ router.post(
         return res.json(profile);
       }
 
+
+      
+      
+
       // Create
       profile = new Profile(profileFields);
 
+      console.log('new profile')
+
       await profile.save();
+
       res.json(profile);
+      
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server Error');

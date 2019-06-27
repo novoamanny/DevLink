@@ -14,7 +14,7 @@ const User = require('../../models/User');
 const gravatar = require('gravatar');
 
 
-// @route GET api/users
+// @route POST api/users
 // @desc Register route
 // @access Public
 router.post('/',
