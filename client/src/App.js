@@ -7,13 +7,18 @@ import { Provider } from 'react-redux';
 // import { loadUser } from './actions/auth';
 // import setAuthToken from './utils/setAuthToken';
 
+
+import Navbar from './components/Navbar/Navbar';
+
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello Manuel!!!</h1>
-    </div>
+    <Router>
+      <Fragment>
+        <Navbar/>
+      </Fragment>
+    </Router>
   );
 }
 
