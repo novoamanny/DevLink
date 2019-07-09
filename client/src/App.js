@@ -9,6 +9,8 @@ import { Provider } from 'react-redux';
 
 
 import Navbar from './components/Navbar/Navbar';
+import Landing from './components/Landing/Landing';
+import Register from './components/Register/Register';
 
 import './App.css';
 
@@ -17,6 +19,11 @@ function App() {
     <Router>
       <Fragment>
         <Navbar/>
+        <Switch>
+          <Route path='/' component={Landing}/>
+          <Route path='/register' component={Register}/>
+        </Switch>
+        
       </Fragment>
     </Router>
   );
