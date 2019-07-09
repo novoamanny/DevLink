@@ -1,0 +1,110 @@
+:root{
+    --primary: #49a34c;
+    --secondary: #17a2b8;
+    --lightBlue: #61dafb;
+    --dark: #343a40;
+    --light: #f4f4f4;
+    --danger: #dc3545;
+    --success: #28a745;
+}
+
+nav{
+    display: grid;
+    
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    background-color: var(--primary);
+    width: 100%;
+    
+    
+    
+    
+}
+
+.contents{
+    
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    
+}
+
+.links{
+
+}
+
+.logo{
+    font-size: 40px;
+    color: var(--light);
+    margin: 7px 20px;
+}
+
+h1{
+
+    color: var(--light);
+    font-size: 28px;
+    margin: 10px 20px;
+}
+
+.logoContainer{
+    display: flex;
+    margin: 0 100px;
+}
+
+.btnContainer{
+    margin: 1px;
+    margin-left: 1050px;
+    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    cursor: pointer;
+    
+    
+    
+    
+    
+}
+
+span{
+    color: var(--light);
+    font-size: 40px;
+}
+
+
+.navBTN{
+
+}
+
+
+    
+.top{
+    background: var(--light);
+    padding: 2px 0;
+    margin: 5px 40px;
+    width: 100%;
+}
+
+.middle{
+    background: var(--light);
+    padding: 2px 0;
+    margin: 2px 40px;
+    width: 100%;
+    
+}
+
+.bottom{
+    background: var(--light);
+    padding: 2px 0;
+    margin: 5px 40px;
+    width: 100%;
+}
+
+.underline{
+    background: var(--dark);
+    padding: 2px;
+    
+    
+    
+}
