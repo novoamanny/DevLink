@@ -1,51 +1,71 @@
-import React, {Component, Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
 import './Register.css';
 
-class Register extends Component{
+const Register = () =>{
 
-    constructor(){
-        super();
+    
+        
 
-        this.state ={
+    const [formData, setFormData] = useState({
             
             registerEmail: '',
             registerName: '',
-            registerPassword: ''
-        }
-    }
+            registerPassword: '',
+            registerPassword2: ''
+    });
+    
 
 
-    onNameChange = (event) =>{
-        this.setState({
-            registerName: event.target.value
-        })
-   }
+//     const onNameChange = (event) =>{
+//         this.setState({
+//             registerName: event.target.value
+//         })
+//    }
 
-    onEmailChange = (event) =>{
-        this.setState({
-            registerEmail: event.target.value
-        })
-   }
+//     const onEmailChange = (event) =>{
+//         this.setState({
+//             registerEmail: event.target.value
+//         })
+//    }
 
-   onPasswordChange = (event) =>{
-        this.setState({
-            registerPassword: event.target.value
-        })
-   }
+//    const onPasswordChange = (event) =>{
+//         this.setState({
+//             registerPassword: event.target.value
+//         })
+//    }
 
 
-   onRegisterClick = (event) =>{
+
+   
         
 
-    const {registerName, registerEmail, registerPassword} = this.state;
-   
-}
+    const {registerName, registerEmail, registerPassword, registerPassword2} = formData;
 
-    render(){
+    const onChange = e => setFormData({...formData, [e.target.name]: e.target.value})
+
+    
+    
+    
+    const onSubmit = async e =>{
+
+        e.preventDefault();
+
+        console.log(formData);
+        
+        if(registerPassword !== registerPassword2){
+            console.log('wrong passwords');
+        }else{
+            console.log('success');
+        }
+    }
+   
+
+
+    
         return(
             <Fragment>
                     
-                        <div id='form-register-container'>
+                        <form id='form-register-container' onSubmit={e => onSubmit(e)}>
                             
                             <h1>Sign Up</h1>
 
@@ -57,31 +77,33 @@ class Register extends Component{
 
                             <div id='input-register-container'>
                                 
-                                <input onChange={this.onNameChange} placeholder='Name' type='text'/>
+                                <input onChange={e => onChange(e)} placeholder='Name' name='registerName' type='text' value={registerName}/>
                         
 
 
                             
                                 
-                                <input onChange={this.onEmailChange} placeholder='Email' type='text'/>
+                                <input onChange={e => onChange(e)} placeholder='Email' name='registerEmail' type='text' value={registerEmail}/>
                             
 
                             
                             
-                                <input onChange={this.onPasswordChange} placeholder='Password' type='text'/>
+                                <input onChange={e => onChange(e)} placeholder='Password' name='registerPassword' type='text' value={registerPassword}/>
+
+                                <input onChange={e => onChange(e)} placeholder='Re-Type Password' name='registerPassword2' type='text' value={registerPassword2}/>
 
                             </div>
                             
 
                             <div id='submit-container'>
-                                <button onClick={() => this.onRegisterClick()} id='submit-register-btn'  type='submit'>Submit</button>
+                                <input  id='submit-register-btn'  type='submit' value='Submit'/>
                             </div>
 
-                        </div>
+                        </form>
                     
             </Fragment>
         );
-    }
+    
 }
 
 

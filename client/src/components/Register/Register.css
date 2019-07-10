@@ -23,6 +23,7 @@
     font-weight: bold;
     font-size: 50px;
     color: var(--primary);
+    
 }
 
 #details{
@@ -67,7 +68,7 @@
     justify-content: center;
 }
 
-#submit-container button{
+#submit-container input{
     padding: 15px;
     font-size: 17px;
     margin: 20px 0;

@@ -67,7 +67,7 @@
     justify-content: center;
 }
 
-#submit-container button{
+#submit-container input{
     padding: 15px;
     font-size: 17px;
     margin: 20px 0;
