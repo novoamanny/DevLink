@@ -11,6 +11,7 @@ import { Provider } from 'react-redux';
 import Navbar from './components/Navbar/Navbar';
 import Landing from './components/Landing/Landing';
 import Register from './components/Register/Register';
+import Routes from './Routes/Routes';
 
 import './App.css';
 
@@ -20,8 +21,8 @@ function App() {
       <Fragment>
         <Navbar/>
         <Switch>
-          <Route path='/' component={Landing}/>
-          <Route path='/register' component={Register}/>
+          <Route exact path='/' component={Landing}/>
+          <Route component={Routes}/>
         </Switch>
         
       </Fragment>

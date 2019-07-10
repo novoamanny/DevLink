@@ -37,14 +37,19 @@ nav{
 .logo{
     font-size: 40px;
     color: var(--light);
-    margin: 7px 20px;
+    margin: 0;
+    padding: 0;
 }
 
-h1{
+nav h1{
 
     color: var(--light);
     font-size: 28px;
-    margin: 10px 20px;
+    position: absolute;
+    z-index: 2;
+    top: -15%;
+    left: 15%;
+   
 }
 
 .logoContainer{
@@ -53,17 +58,13 @@ h1{
 }
 
 .btnContainer{
-    margin: 1px;
-    margin-left: 1050px;
+   position: absolute;
+   z-index: 2;
+   top: 0;
+   left: 92%;
     
-    display: flex;
-    flex-wrap: wrap;
-    justify-content:center;
+    
     cursor: pointer;
-    
-    
-    
-    
     
 }
 
@@ -73,13 +74,8 @@ span{
 }
 
 
-.navBTN{
-
-}
-
-
     
-.top{
+/* .top{
     background: var(--light);
     padding: 2px 0;
     margin: 5px 40px;
@@ -99,7 +95,7 @@ span{
     padding: 2px 0;
     margin: 5px 40px;
     width: 100%;
-}
+} */
 
 .underline{
     background: var(--dark);
@@ -108,3 +104,56 @@ span{
     
     
 }
+
+.decor-bar{
+    padding-bottom: 60px;
+    background: darkgreen;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    
+}
+
+
+
+.side-nav{
+        
+        
+    height:100%;
+    width: 0;
+    position: fixed;
+    z-index:1;
+    top:0;
+    right:0;
+    background-color: var(--light);
+    opacity:0.8;
+    overflow-x:hidden;
+    padding-top:60px;
+    transition:0.5s;
+  }
+  
+  .side-nav-link{
+    padding:10px 10px 10px 30px;
+    text-decoration:none;
+    font-size:22px;
+    color: var(--dark);
+    display:block;
+    transition:0.3s;
+  }
+  
+  .side-nav-link:hover{
+    color:black;
+  }
+  
+  .side-nav .btn-close{
+    position:absolute;
+    top:0;
+    right:22px;
+    font-size:36px;
+    margin-left:50px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+  }

@@ -1,43 +1,43 @@
 import React, {Component, Fragment} from 'react';
-import './Register.css';
+import './Login.css';
 
-class Register extends Component{
+class Login extends Component{
 
     constructor(){
         super();
 
         this.state ={
             
-            registerEmail: '',
-            registerName: '',
-            registerPassword: ''
+            loginEmail: '',
+            loginName: '',
+            loginPassword: ''
         }
     }
 
 
     onNameChange = (event) =>{
         this.setState({
-            registerName: event.target.value
+            loginName: event.target.value
         })
    }
 
     onEmailChange = (event) =>{
         this.setState({
-            registerEmail: event.target.value
+            loginrEmail: event.target.value
         })
    }
 
    onPasswordChange = (event) =>{
         this.setState({
-            registerPassword: event.target.value
+            loginPassword: event.target.value
         })
    }
 
 
-   onRegisterClick = (event) =>{
+   onLoginClick = (event) =>{
         
 
-    const {registerName, registerEmail, registerPassword} = this.state;
+    const {loginName, loginEmail, loginPassword} = this.state;
    
 }
 
@@ -45,23 +45,17 @@ class Register extends Component{
         return(
             <Fragment>
                     
-                        <div id='form-register-container'>
+                        <div id='form-login-container'>
                             
-                            <h1>Sign Up</h1>
+                            <h1>Sign In</h1>
 
-                            <div id='details'>
+                            <div id='details-login'>
                                 <i className="fas fa-user"></i>
-                                <p>Create Your Account</p>
+                                <p>Sign In</p>
                             </div>
                             
 
-                            <div id='input-register-container'>
-                                
-                                <input onChange={this.onNameChange} placeholder='Name' type='text'/>
-                        
-
-
-                            
+                            <div id='input-login-container'>
                                 
                                 <input onChange={this.onEmailChange} placeholder='Email' type='text'/>
                             
@@ -74,7 +68,7 @@ class Register extends Component{
                             
 
                             <div id='submit-container'>
-                                <button onClick={() => this.onRegisterClick()} id='submit-register-btn'  type='submit'>Submit</button>
+                                <button onClick={() => this.onLoginClick()} id='submit-login-btn'  type='submit'>Submit</button>
                             </div>
 
                         </div>
@@ -85,4 +79,4 @@ class Register extends Component{
 }
 
 
-export default Register;
+export default Login;
