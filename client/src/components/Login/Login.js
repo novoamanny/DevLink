@@ -46,12 +46,14 @@ class Login extends Component{
             <Fragment>
                     
                         <div id='form-login-container'>
+
+                        <div className='bg-img-log'></div>
                             
                             <h1>Sign In</h1>
 
                             <div id='details-login'>
                                 <i className="fas fa-user"></i>
-                                <p>Sign In</p>
+                                <p>Sign Into Your Account</p>
                             </div>
                             
 
@@ -67,7 +69,7 @@ class Login extends Component{
                             </div>
                             
 
-                            <div id='submit-container'>
+                            <div id='submit-container-log'>
                                 <button onClick={() => this.onLoginClick()} id='submit-login-btn'  type='submit'>Submit</button>
                             </div>
 

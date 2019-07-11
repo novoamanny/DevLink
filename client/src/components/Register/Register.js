@@ -66,6 +66,7 @@ const Register = () =>{
             <Fragment>
                     
                         <form id='form-register-container' onSubmit={e => onSubmit(e)}>
+                            <div className='bg-img-reg'></div>
                             
                             <h1>Sign Up</h1>
 
