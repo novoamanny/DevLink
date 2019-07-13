@@ -1,7 +1,17 @@
 import React, {Fragment, useState} from 'react';
+import { connect } from 'react-redux';
+
+import { setAlert } from '../../actions/alert';
+
+import {register} from '../../actions/auth';
+
+import PropTypes from 'prop-types';
+
+
+
 import './Register.css';
 
-const Register = () =>{
+const Register = ({ setAlert, register, }) =>{
 
     
         
@@ -15,30 +25,6 @@ const Register = () =>{
     });
     
 
-
-//     const onNameChange = (event) =>{
-//         this.setState({
-//             registerName: event.target.value
-//         })
-//    }
-
-//     const onEmailChange = (event) =>{
-//         this.setState({
-//             registerEmail: event.target.value
-//         })
-//    }
-
-//    const onPasswordChange = (event) =>{
-//         this.setState({
-//             registerPassword: event.target.value
-//         })
-//    }
-
-
-
-   
-        
-
     const {registerName, registerEmail, registerPassword, registerPassword2} = formData;
 
     const onChange = e => setFormData({...formData, [e.target.name]: e.target.value})
@@ -50,12 +36,13 @@ const Register = () =>{
 
         e.preventDefault();
 
-        console.log(formData);
+        
         
         if(registerPassword !== registerPassword2){
-            console.log('wrong passwords');
+            // Redux action call
+            setAlert('Passwords Do Not Match', 'danger');
         }else{
-            console.log('success');
+            register({registerName,registerEmail, registerPassword});
         }
     }
    
@@ -64,8 +51,11 @@ const Register = () =>{
     
         return(
             <Fragment>
+
+                
                     
                         <form id='form-register-container' onSubmit={e => onSubmit(e)}>
+                        
                             <div className='bg-img-reg'></div>
                             
                             <h1>Sign Up</h1>
@@ -107,5 +97,10 @@ const Register = () =>{
     
 }
 
+Register.propTypes = {
+    setAlert: PropTypes.func.isRequired,
+    register: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool
+};
 
-export default Register;
+export default connect(null, {setAlert, register})(Register);

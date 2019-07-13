@@ -25,7 +25,7 @@
     color: var(--light);
     position: absolute;
     z-index: 2;
-    top: 15%;
+    top: 18%;
 }
 
 #details-login{
@@ -34,8 +34,8 @@
     
     position: absolute;
     z-index: 2;
-    top: 30%; 
-    left: 29%;
+    top: 35%; 
+    left: 28%;
 }
 
 #details-login i{
@@ -58,7 +58,7 @@
     justify-content: center;
     position: absolute;
     z-index: 2;
-    top: 37%;
+    top: 42%;
 }
 
 #input-login-container input{

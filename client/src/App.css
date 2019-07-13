@@ -3,8 +3,8 @@
   --secondary-color: #17a2b8;
   --light-blue: #61dafb;
   --dark-color: #343a40;
-  --light-color: #f4f4f4;
-  --danger-color: #dc3545;
+  --light: #f4f4f4;
+  --danger: #dc3545;
   --success-color: #28a745;
   --dark2-color: #282c34;
 }
@@ -15,6 +15,16 @@
 .App {
   text-align: center;
 }
+
+
+#alert-container{
+  position: absolute;
+  z-index: 2;
+  top: 7%;
+  left: 0;
+  right: 0;
+}
+
 
 
 

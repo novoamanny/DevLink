@@ -1,0 +1,25 @@
+:root{
+    --primary: #49a34c;
+    --secondary: #17a2b8;
+    --lightBlue: #61dafb;
+    --dark: #343a40;
+    --light: #f4f4f4;
+    --danger: #dc3545;
+    --success: #28a745;
+}
+
+.alert {
+    
+    
+    padding: 0.8rem;
+    margin: 1rem;
+    opacity: 0.9;
+    background: var(--light);
+    color: #333;
+  }
+  
+  
+  .alert-danger {
+    background: var(--danger);
+    color: #fff;
+  }

@@ -1,6 +1,7 @@
 const express = require('express');
 const connectDB = require('./config/db');
 const bodyParser = require('body-parser');
+const cors = require('cors')
 
 
 
@@ -11,6 +12,7 @@ connectDB();
 // Init Malware
 app.use(express.json({extended: false}));
 app.use(bodyParser.json());
+app.use(cors());
 
 
 
