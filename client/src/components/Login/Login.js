@@ -1,51 +1,49 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component, Fragment, useState} from 'react';
+import { connect } from 'react-redux';
+
+import { setAlert } from '../../actions/alert';
+
+import {login} from '../../actions/auth';
+
+import PropTypes from 'prop-types';
+
 import './Login.css';
 
-class Login extends Component{
+// AUTH
+// Token setup
+// Load User
 
-    constructor(){
-        super();
+const Login = ({setAlert, login}) => {
 
-        this.state ={
-            
-            loginEmail: '',
-            loginName: '',
-            loginPassword: ''
-        }
-    }
-
-
-    onNameChange = (event) =>{
-        this.setState({
-            loginName: event.target.value
-        })
-   }
-
-    onEmailChange = (event) =>{
-        this.setState({
-            loginrEmail: event.target.value
-        })
-   }
-
-   onPasswordChange = (event) =>{
-        this.setState({
-            loginPassword: event.target.value
-        })
-   }
-
-
-   onLoginClick = (event) =>{
+    const [formData, setFormData] = useState({
+        loginEmail: '',
+        loginPassword: ''
+    })
         
 
-    const {loginName, loginEmail, loginPassword} = this.state;
-   
-}
+    const {loginEmail, loginPassword} = formData;
 
-    render(){
+
+    const onChange = e => setFormData({...formData, [e.target.name]: e.target.value});
+
+    const onSubmit = async e =>{
+
+        e.preventDefault();
+
+        login(loginEmail, loginPassword)
+        
+        // if(registerPassword !== registerPassword2){
+        //     // Redux action call
+        //     setAlert('Passwords Do Not Match', 'danger');
+        // }else{
+        //     register({registerName,registerEmail, registerPassword});
+        // }
+    }
+
         return(
             <Fragment>
-                    
-                        <div id='form-login-container'>
+                    <form id='form-login-container' onSubmit={e => onSubmit(e)}>
+                        
 
                         <div className='bg-img-log'></div>
                             
@@ -59,26 +57,29 @@ class Login extends Component{
 
                             <div id='input-login-container'>
                                 
-                                <input onChange={this.onEmailChange} placeholder='Email' type='text'/>
+                                <input onChange={e => onChange(e)} name='loginEmail' value={loginEmail} placeholder='Email' type='text'/>
                             
 
                             
                             
-                                <input onChange={this.onPasswordChange} placeholder='Password' type='text'/>
+                                <input onChange={e => onChange(e)} name='loginPassword' value={loginPassword} placeholder='Password' type='text'/>
 
                             </div>
                             
 
                             <div id='submit-container-log'>
-                                <button onClick={() => this.onLoginClick()} id='submit-login-btn'  type='submit'>Submit</button>
+                            <input  id='submit-login-btn'  type='submit' value='Submit'/>
                             </div>
 
-                        </div>
-                    
+                        
+                    </form>
             </Fragment>
         );
     }
+
+Login.propTypes = {
+    setAlert: PropTypes.func.isRequired,
+    login: PropTypes.func.isRequired,
 }
 
-
-export default Login;
+export default connect(null, {setAlert, login})(Login);

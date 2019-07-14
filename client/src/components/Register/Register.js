@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 
 import './Register.css';
 
-const Register = ({ setAlert, register, }) =>{
+const Register = ({ setAlert, register }) =>{
 
     
         
@@ -27,7 +27,7 @@ const Register = ({ setAlert, register, }) =>{
 
     const {registerName, registerEmail, registerPassword, registerPassword2} = formData;
 
-    const onChange = e => setFormData({...formData, [e.target.name]: e.target.value})
+    const onChange = e => setFormData({...formData, [e.target.name]: e.target.value});
 
     
     
