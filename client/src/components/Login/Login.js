@@ -1,5 +1,6 @@
 import React, {Component, Fragment, useState} from 'react';
 import { connect } from 'react-redux';
+import {Link, Redirect} from 'react-router-dom';
 
 import { setAlert } from '../../actions/alert';
 
@@ -13,7 +14,7 @@ import './Login.css';
 // Token setup
 // Load User
 
-const Login = ({setAlert, login}) => {
+const Login = ({setAlert, login, isAuthenticated}) => {
 
     const [formData, setFormData] = useState({
         loginEmail: '',
@@ -39,6 +40,10 @@ const Login = ({setAlert, login}) => {
         //     register({registerName,registerEmail, registerPassword});
         // }
     }
+
+        if(isAuthenticated){
+            return <Redirect to='/dashboard'/>
+        }
 
         return(
             <Fragment>
@@ -80,6 +85,12 @@ const Login = ({setAlert, login}) => {
 Login.propTypes = {
     setAlert: PropTypes.func.isRequired,
     login: PropTypes.func.isRequired,
+    isAuthenticated: PropTypes.bool
 }
 
-export default connect(null, {setAlert, login})(Login);
+
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+  });
+
+export default connect(mapStateToProps, {setAlert, login})(Login);

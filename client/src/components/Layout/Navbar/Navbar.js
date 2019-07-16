@@ -1,27 +1,47 @@
-import React, {Component,Fragment} from 'react';
+import React, {Fragment} from 'react';
+import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+import {logout} from '../../../actions/auth';
 
 import './Navbar.css';
+import auth from '../../../reducers/auth';
 
 
 
 
 
 
-class Navbar extends Component{
+const Navbar = ({logout, auth: {isAuthenticated, loading}}) =>{
 
 
-    openSideMenu = () =>{
+    const authLinks = (
+        <Fragment>
+            <li className='side-nav-link' onClick={()=>logout()}>Sign out</li>
+        </Fragment>
+    );
+
+    const guestLinks = (
+        <Fragment>
+            <Link className='side-nav-link' to='/login' onClick={()=>closeMenu()} >Sign In</Link>
+            <Link className='side-nav-link' to='/register' onClick={()=>closeMenu()} >Register</Link>
+        </Fragment>
+    );
+
+
+    const openSideMenu = () =>{
         document.getElementById('side-menu').style.width = '325px';
         
     }
     
-    closeMenu = () =>{
+    const closeMenu = () =>{
         document.getElementById('side-menu').style.width = '0';
         
     }
 
-    render(){
+
+    
         return(
             <Fragment>
                 <nav>
@@ -51,7 +71,7 @@ class Navbar extends Component{
                             <div className='middle'></div>
                             <div className='bottom'></div> */}
         
-                            <span onClick={() => this.openSideMenu()}>&#9776;</span>
+                            <span onClick={() => openSideMenu()}>&#9776;</span>
                         </div>
                     </div>
         
@@ -63,18 +83,30 @@ class Navbar extends Component{
                 {/* Side Menu */}
                 <div id="side-menu" className="side-nav">
                     <div className='decor-bar'></div>
-                    <button className="btn-close" onClick={()=>this.closeMenu()}>&times;</button>
+                    <button className="btn-close" onClick={()=>closeMenu()}>&times;</button>
                     
-                    <Link className='side-nav-link' to='/login' onClick={()=>this.closeMenu()} >Sign In</Link>
-                    <Link className='side-nav-link' to='/register' onClick={()=>this.closeMenu()} >Register</Link>
+                    {!loading && <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>}
                     
     
                 </div>
             </Fragment>
         );
-    }
+    
     
 }
 
+Navbar.propTypes = {
+    logout: PropTypes.func.isRequired,
+    auth:   PropTypes.object.isRequired
+}
 
-export default Navbar;
+
+
+const mapStatetoProps = state =>({
+    auth: state.auth
+})
+
+
+
+
+export default connect(mapStatetoProps, {logout})(Navbar);

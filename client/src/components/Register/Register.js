@@ -1,4 +1,5 @@
 import React, {Fragment, useState} from 'react';
+import {Link, Redirect} from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { setAlert } from '../../actions/alert';
@@ -11,7 +12,7 @@ import PropTypes from 'prop-types';
 
 import './Register.css';
 
-const Register = ({ setAlert, register }) =>{
+const Register = ({ setAlert, register, isAuthenticated }) =>{
 
     
         
@@ -47,6 +48,9 @@ const Register = ({ setAlert, register }) =>{
     }
    
 
+        if(isAuthenticated){
+            return <Redirect to='/dashboarcd'/>
+        }
 
     
         return(
@@ -103,4 +107,9 @@ Register.propTypes = {
     isAuthenticated: PropTypes.bool
 };
 
-export default connect(null, {setAlert, register})(Register);
+
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, {setAlert, register})(Register);

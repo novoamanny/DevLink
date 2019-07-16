@@ -1,18 +1,40 @@
 import axios from 'axios';
 import {setAlert} from './alert';
 
-import {REGISTER_SUCCESS, REGISTER_FAIL, USER_LOADED, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL} from './types';
+import {REGISTER_SUCCESS, REGISTER_FAIL, USER_LOADED, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT, CLEAR_PROFILE} from './types';
+import setAuthToken from '../utils/setAuthToken';
+
+const config = {
+  headers: {
+      'Content-Type': 'application/json'
+  }
+}
+
+
+export const loadUser = () => async dispatch =>{
+  if(localStorage.token){
+    setAuthToken(localStorage.token);
+  }
+
+  try {
+    const res = await axios.get('http://localhost:8080/api/auth');
+
+    dispatch({
+      type: USER_LOADED,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: AUTH_ERROR
+    });
+  }
+  
+}
 
 
 
 // Register User
 export const register = ({registerName, registerEmail, registerPassword}) => async dispatch =>{
-
-    const config = {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }
 
     const body= JSON.stringify({name: registerName, email: registerEmail, password: registerPassword});
     
@@ -41,11 +63,6 @@ export const register = ({registerName, registerEmail, registerPassword}) => asy
 
 // Login User
 export const login = (loginEmail, loginPassword) => async dispatch => {
-    const config = {
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    };
   
     const body = JSON.stringify({ email: loginEmail, password: loginPassword });
 
@@ -61,7 +78,7 @@ export const login = (loginEmail, loginPassword) => async dispatch => {
         payload: res.data
       });
   
-    //   dispatch(loadUser());
+      dispatch(loadUser());
     } catch (err) {
       const errors = err.response.data.errors;
   
@@ -74,3 +91,9 @@ export const login = (loginEmail, loginPassword) => async dispatch => {
       });
     }
   };
+
+// Logout User
+export const logout = () => dispatch =>{
+  dispatch({type: CLEAR_PROFILE})
+  dispatch({type: LOGOUT})
+}
