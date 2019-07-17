@@ -1,0 +1,56 @@
+:root{
+    --primary: #49a34c;
+    --secondary: #17a2b8;
+    --lightBlue: #61dafb;
+    --dark: #343a40;
+    --light: #f4f4f4;
+    --danger: #dc3545;
+    --success: #28a745;
+}
+
+#school-info{
+    margin: 10px 0;
+    padding: 20px 30px;
+    border: 2px solid var(--primary);
+    border-radius: 15px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#school-info p:nth-child(1){
+    width: 100%;
+    color: var(--light);
+    font-size: 22px;
+    text-align: center;
+    
+}
+
+#school-info p:nth-child(2){
+    color: var(--light);
+    font-size: 18px;
+    width: 100%;
+    text-align: center;
+    
+}
+
+#school-info p:nth-child(3){
+    color: var(--light);
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+    
+}
+
+#edit-school-btn{
+    color: var(--light);
+    text-decoration: none;
+    background: var(--success);
+    padding: 10px 50px;
+    border-radius: 15px;
+    font-size: 20px;
+    
+    
+}

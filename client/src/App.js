@@ -11,7 +11,7 @@ import setAuthToken from './utils/setAuthToken';
 import Navbar from './components/Layout/Navbar/Navbar';
 import Landing from './components/Layout/Landing/Landing';
 import Routes from './Routes/Routes';
-import Alert from './components/Layout/Alert';
+import Alert from './components/Layout/Alert/Alert';
 
 import './App.css';
 

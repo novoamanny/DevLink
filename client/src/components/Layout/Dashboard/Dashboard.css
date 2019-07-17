@@ -1,0 +1,123 @@
+:root{
+    --primary: #49a34c;
+    --secondary: #17a2b8;
+    --lightBlue: #61dafb;
+    --dark: #343a40;
+    --light: #f4f4f4;
+    --danger: #dc3545;
+    --success: #28a745;
+}
+
+#main-dashboard-container{
+    
+    padding: 100px;
+    background: var(--dark);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#title-container{
+    width: 100%;
+}
+
+#dashboard-title{
+    text-align: center;
+    font-size: 30px;
+    color: var(--primary);
+}
+
+#ui-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#block-container-left{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* Name Block */
+
+#name-block{
+    display: flex;
+    margin: 20px 40px;
+    width: 100%;
+    background: var(--primary);
+    padding: 30px;
+    border-radius: 25px;
+}
+
+
+
+#image-dashboard{
+    padding: 80px;
+    margin: 0 40px;
+    border-radius: 50%;
+    background: var(--dark);
+}
+
+#user-details h1,p{
+    color: var(--light);
+}
+
+/* Info Block */
+#info-block{
+    width: 100%;
+
+    margin: 20px 40px;
+}
+
+#experience{
+    padding: 0 50px;
+    
+}
+
+#experience-title{
+    color: var(--primary);
+    font-size: 30px;
+}
+
+#education{
+    padding: 0 50px;
+    margin: 50px 0;
+}
+
+#education-title{
+    color: var(--primary);
+    font-size: 30px;
+}
+
+#skills{
+    padding: 0 50px;
+    margin: 20px 0;
+    margin-bottom: 50px;
+}
+
+
+#skills-title{
+    color: var(--primary);
+    font-size: 30px;
+}
+
+#block-container-right{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#blog-container{
+    width: 100%;
+    
+    margin: 20px 40px;
+    background: var(--danger);
+}
+
+#main-feed{
+    width: 100%;
+    margin: 20px 40px;
+    
+    border: var(--primary) solid 2px;
+    
+    background: var(--primary);
+}

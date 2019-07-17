@@ -17,7 +17,7 @@ export const loadUser = () => async dispatch =>{
   }
 
   try {
-    const res = await axios.get('http://localhost:8080/api/auth');
+    const res = await axios.get('http://localhost:5000/api/auth');
 
     dispatch({
       type: USER_LOADED,
@@ -40,7 +40,7 @@ export const register = ({registerName, registerEmail, registerPassword}) => asy
     
 
     try{
-        const res = await axios.post('http://localhost:8080/api/users', body, config, console.log('Registering...'));
+        const res = await axios.post('http://localhost:5000/api/users', body, config, console.log('Registering...'));
                         
         
 
@@ -69,7 +69,7 @@ export const login = (loginEmail, loginPassword) => async dispatch => {
     console.log(body);
   
     try {
-      const res = await axios.post('http://localhost:8080/api/auth', body, config);
+      const res = await axios.post('http://localhost:5000/api/auth', body, config);
         
       
   

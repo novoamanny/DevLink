@@ -1,0 +1,42 @@
+#skills-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: 2px solid var(--primary);
+    border-radius: 15px;
+}
+
+#skillList{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    
+    padding: 10px;
+    width: 100%;
+}
+
+
+#skill p{
+    color: var(--light);
+    font-size: 15px;
+    text-align: center;
+}
+
+#skill-btn-container{
+    
+    margin: 10px 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#edit-skills-btn{
+    color: var(--light);
+    text-decoration: none;
+    background: var(--success);
+    padding: 10px 50px;
+    border-radius: 15px;
+    font-size: 20px;
+    
+    
+}

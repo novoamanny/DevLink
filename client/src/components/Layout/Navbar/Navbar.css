@@ -1,12 +1,4 @@
-:root{
-    --primary: #49a34c;
-    --secondary: #17a2b8;
-    --lightBlue: #61dafb;
-    --dark: #343a40;
-    --light: #f4f4f4;
-    --danger: #dc3545;
-    --success: #28a745;
-}
+
 
 nav{
     display: grid;

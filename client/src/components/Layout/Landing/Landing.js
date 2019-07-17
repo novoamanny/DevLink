@@ -1,8 +1,16 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {Link, Redirect} from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './Landing.css';
 
-const Showcase = () =>{
+const Landing = ({isAuthenticated}) =>{
+
+    // Redirect
+    if (isAuthenticated) {
+        return <Redirect to='/dashboard' />;
+    }
+
 
     return(
         <div className='showcase'>
@@ -24,4 +32,13 @@ const Showcase = () =>{
 }
 
 
-export default Showcase;
+Landing.propTypes = {
+    isAuthenticated: PropTypes.bool
+};
+
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+});
+
+
+export default connect(mapStateToProps)(Landing);

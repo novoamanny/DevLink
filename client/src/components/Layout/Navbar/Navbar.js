@@ -18,7 +18,7 @@ const Navbar = ({logout, auth: {isAuthenticated, loading}}) =>{
 
     const authLinks = (
         <Fragment>
-            <li className='side-nav-link' onClick={()=>logout()}>Sign out</li>
+            <li className='side-nav-link' onClick={()=>signOut()}>Sign out</li>
         </Fragment>
     );
 
@@ -38,6 +38,11 @@ const Navbar = ({logout, auth: {isAuthenticated, loading}}) =>{
     const closeMenu = () =>{
         document.getElementById('side-menu').style.width = '0';
         
+    }
+
+    const signOut = () =>{
+        logout();
+        closeMenu();
     }
 
 
