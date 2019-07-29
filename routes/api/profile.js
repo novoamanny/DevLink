@@ -205,6 +205,71 @@ router.delete('/', auth, async (req, res) => {
 });
 
 
+// I  A M  H E R E
+
+
+// @route   PUT api/profile/skills
+// @desc    Add profile skills
+// @access Private
+router.put(
+  '/skills',
+  [
+    auth,
+    [
+    check('skills', 'Skills are required to update')
+      .not()
+      .isEmpty()
+    ]
+  ],
+  async(req, res) =>{
+    const errors = validationResult(req);
+    if(!errors.isEmpty()){
+      return res.status(400).json({erros: errors.array()});
+    }
+
+    const skillList = req.body.map();
+    
+    try{
+      const profile = await Profile.findOne({User: req.user.id});
+
+      profile.skills.unshift(skillList);
+
+      await profile.save();
+
+      res.json(profile);
+    }catch(err){
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  }
+)
+
+
+// @route   DELETE api/profile/skills
+// @desc    Delete profile skills
+// @access  Private
+router.delete('/skills/:skill', auth, async (req, res) =>{
+
+  try{
+    const foundProfile = await Profile.findOne({User: req.user.id});
+    const skillID = foundProfile.skills.map(skill => skill.toString());
+    const removeIndex = skillID.indexOf(req.params.skill);
+
+    if(removeIndex === -1){
+      return res.status(500).json({ msg: "Server error" });
+    }else{
+      foundProfile.skills.splice(removeIndex, 1);
+      await foundProfile.save();
+      return res.status(200).json(foundProfile);
+    }
+  } catch(error){
+    console.error(error);
+    return res.status(500).json({ msg: "Server error" });
+  }
+  
+})
+
+
 // @route    PUT api/profile/experience
 // @desc     Add profile experience
 // @access   Private

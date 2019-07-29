@@ -15,9 +15,14 @@ import './Dashboard.css';
 
 const Dashboard = ({setAlert, getCurrentProfile, auth: { user },profile: { profile, loading }}) =>{
 
+    
+    
     useEffect(() => {
+        
       getCurrentProfile();
-    }, [getCurrentProfile])
+      
+    })
+    
 
     return loading && profile === null ? <Spinner/> : (
 
@@ -45,8 +50,10 @@ const Dashboard = ({setAlert, getCurrentProfile, auth: { user },profile: { profi
                     <div id='info-block'>
 
                         <div id='skills'>
+                            
                             <h1 id='skills-title'>Skills</h1>
-                            <Skills skills={profile.skills}/>
+                            { profile.skills ? <Skills skills={profile.skills}/> : <h1 id='noSkills-alert'>No Skills...</h1>}
+                            
                             
                         </div>
                         
@@ -54,12 +61,14 @@ const Dashboard = ({setAlert, getCurrentProfile, auth: { user },profile: { profi
 
                         <div id='experience'>
                             <h1 id='experience-title'>Experience</h1>
-                            <Experience experience={profile.experience}/>
+                            { profile.experience ? <Experience experience={profile.experience}/> : <h1 id='noExperience-alert'>No Experience...</h1>}
+                            
                         </div>
 
                         <div id='education'>
                             <h1 id='education-title'>Education</h1>
-                            <Education education={profile.education}/>
+                            { profile.education ? <Education education={profile.education}/> : <h1 id='noEducation-alert'>No Education...</h1>}
+                            
                         </div>
 
                     </div>
@@ -68,12 +77,13 @@ const Dashboard = ({setAlert, getCurrentProfile, auth: { user },profile: { profi
                 {/* right */}
                 <div id='block-container-right'>
                     <div id='blog-container'>
-
+                        <textarea/>
                     </div>
 
-                    <div id='main-feed'>
-
+                    <div id='feed-container'>
+                        <h1>No Post yet...</h1>
                     </div>
+
                 </div>
 
             </div>
@@ -84,7 +94,7 @@ const Dashboard = ({setAlert, getCurrentProfile, auth: { user },profile: { profi
 
 Dashboard.propTypes = {
     getCurrentProfile: PropTypes.func.isRequired,
-    deleteAccount: PropTypes.func.isRequired,
+    // deleteAccount: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     profile: PropTypes.object.isRequired
 }

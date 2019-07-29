@@ -29,13 +29,14 @@
 
 #ui-container{
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    
 }
 
 #block-container-left{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 /* Name Block */
@@ -70,6 +71,7 @@
 }
 
 #experience{
+    
     padding: 0 50px;
     
 }
@@ -80,6 +82,7 @@
 }
 
 #education{
+    
     padding: 0 50px;
     margin: 50px 0;
 }
@@ -90,6 +93,7 @@
 }
 
 #skills{
+    
     padding: 0 50px;
     margin: 20px 0;
     margin-bottom: 50px;
@@ -103,21 +107,52 @@
 
 #block-container-right{
     display: flex;
+
     flex-wrap: wrap;
 }
 
 #blog-container{
     width: 100%;
-    
     margin: 20px 40px;
-    background: var(--danger);
+    
 }
 
-#main-feed{
+
+#feed-container{
+    border: var(--primary) 2px solid;
     width: 100%;
-    margin: 20px 40px;
-    
-    border: var(--primary) solid 2px;
-    
-    background: var(--primary);
+    padding: 400px 20px;
+    margin: 0px 40px;
+    text-align: center;
+    box-shadow: rgb(36, 36, 36) 15px 20px;
+}
+
+
+
+
+
+textarea{
+    height: 180px;
+    width: 500px;
+    border: var(--primary) solid 5px;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+#noSkills-alert{
+    text-align: center;
+    color: var(--light);
+    margin: 100px 0px;
+}
+
+#noExperience-alert{
+   text-align: center;
+   color: var(--light);
+   margin: 100px 0px;
+}
+
+#noEducation-alert{
+   text-align: center;
+   color: var(--light);
+   margin: 100px 0px;
 }

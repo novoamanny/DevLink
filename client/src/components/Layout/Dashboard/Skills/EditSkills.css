@@ -1,0 +1,46 @@
+:root{
+    --primary: #49a34c;
+    --secondary: #17a2b8;
+    --lightBlue: #61dafb;
+    --dark: #343a40;
+    --light: #f4f4f4;
+    --danger: #dc3545;
+    --success: #28a745;
+}
+
+#edit-skills-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 100px;
+}
+
+#edit-skills-container h1{
+    text-align: center;
+    width: 100%;
+}
+
+#current-skills{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.skill-display{
+    margin: 50px;
+    display: flex;
+    
+}
+
+
+
+.delete-btn{
+    color: var(--danger);
+    background: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+
+}
+
+
+

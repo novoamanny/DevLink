@@ -12,7 +12,7 @@ const Education = ({education}) =>{
             <p>{sch.degree}</p>
             <p><Moment format='YYYY/MM/DD'>{moment.utc(sch.from)}</Moment></p>
             <div>
-                <Link id='edit-school-btn'>Edit</Link>
+                <Link id='edit-school-btn' to='/edit'>Edit</Link>
             </div>
         </div>
     ))
