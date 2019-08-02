@@ -12,7 +12,7 @@ const Experience = ({experience }) =>{
             <p>{exp.title}</p>
             <p><Moment format='YYYY/MM/DD'>{moment.utc(exp.from)}</Moment></p>
             <div>
-                <Link id='edit-exp-btn' to='/edit'>Edit</Link>
+                <Link id='edit-exp-btn' to='/edit/experience'>Edit</Link>
             </div>
         </div>
     ))

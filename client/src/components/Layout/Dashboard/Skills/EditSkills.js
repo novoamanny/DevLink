@@ -1,11 +1,11 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
-import {getCurrentProfile, deleteSkill} from '../../../../actions/profile';
+import {getCurrentProfile, addSkill, deleteSkill} from '../../../../actions/profile';
 import PropTypes from 'prop-types';
 
 import './EditSkills.css';
 
-const EditSkills = ({getCurrentProfile, deleteSkill, auth: { user },profile: { profile, loading }}) =>{
+const EditSkills = ({getCurrentProfile, addSkill, deleteSkill, auth: { user },profile: { profile, loading }}) =>{
 
     useEffect(() => {
         
@@ -14,13 +14,23 @@ const EditSkills = ({getCurrentProfile, deleteSkill, auth: { user },profile: { p
       },[getCurrentProfile])
 
 
-    
+    const [formData, setFormData] = useState({
+        newSkill: ''
+    })
 
-    
+    const {newSkill} = formData;
+
+    const onChange = e => setFormData({...formData, [e.target.name]: e.target.value})
+
+    const onSubmit = async e =>{
+        e.preventDefault();
+        
+        addSkill(newSkill);
+    }
 
    return(
     <div id='edit-skills-container'>
-        <h1>Edis Skills</h1>
+        <h1>Edit Skills</h1>
         <h1>Current Skills</h1>
             <div id='current-skills'>
                 {profile.skills.map(skill => (
@@ -32,6 +42,12 @@ const EditSkills = ({getCurrentProfile, deleteSkill, auth: { user },profile: { p
                     </div>
                 ))}
             </div>
+
+            <form className='skill-form-container' onSubmit={(e) => onSubmit(e)}>
+                    <h1>Add Skill</h1>
+                    <input onChange={e => onChange(e)} name='newSkill' value={newSkill} placeholder='Add Skill' type='text'/>
+                    <input type='submit' value='Submit'/>
+            </form>
     </div>
 
    )
@@ -50,4 +66,4 @@ const mapStateToProps = state => ({
     profile: state.profile
 });
 
-export default connect(mapStateToProps, {getCurrentProfile, deleteSkill})(EditSkills)
+export default connect(mapStateToProps, {getCurrentProfile, addSkill, deleteSkill})(EditSkills)

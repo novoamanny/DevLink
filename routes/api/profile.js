@@ -205,7 +205,7 @@ router.delete('/', auth, async (req, res) => {
 });
 
 
-// I  A M  H E R E
+
 
 
 // @route   PUT api/profile/skills
@@ -227,12 +227,17 @@ router.put(
       return res.status(400).json({erros: errors.array()});
     }
 
-    const skillList = req.body.map();
+    let newSkill = req.body.skills;
+
+    
+
     
     try{
+      
       const profile = await Profile.findOne({User: req.user.id});
 
-      profile.skills.unshift(skillList);
+      profile.skills.unshift(newSkill);
+      
 
       await profile.save();
 

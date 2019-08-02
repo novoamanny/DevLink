@@ -33,12 +33,6 @@ const Login = ({setAlert, login, isAuthenticated}) => {
 
         login(loginEmail, loginPassword)
         
-        // if(registerPassword !== registerPassword2){
-        //     // Redux action call
-        //     setAlert('Passwords Do Not Match', 'danger');
-        // }else{
-        //     register({registerName,registerEmail, registerPassword});
-        // }
     }
 
         if(isAuthenticated){
