@@ -6,6 +6,7 @@
     --light: #f4f4f4;
     --danger: #dc3545;
     --success: #28a745;
+    --warning: #ffcc00;
 }
 
 .alert {
@@ -21,5 +22,15 @@
   
   .alert-danger {
     background: var(--danger);
+    color: #fff;
+  }
+
+  .alert-success {
+    background: var(--success);
+    color: #fff;
+  }
+
+  .alert-warning{
+    background: var(--warning);
     color: #fff;
   }

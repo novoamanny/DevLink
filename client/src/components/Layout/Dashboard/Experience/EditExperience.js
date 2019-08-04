@@ -1,31 +1,38 @@
 import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
+import Moment from 'react-moment';
+import moment from 'moment';
 
 import Experience from './Experience';
-import { getCurrentProfile } from '../../../../actions/profile';
+import { getCurrentProfile, addExperience, deleteExperience } from '../../../../actions/profile';
 
 
 
-const EditExperience = ({getCurrentProfile, auth: {user}, profile: {profile}}) => {
+
+const EditExperience = ({getCurrentProfile, addExperience, deleteExperience, auth: {user}, profile: {profile}}) => {
 
     useEffect(() => {
         getCurrentProfile();
     }, [getCurrentProfile])
 
-    // const [formData, setFormData] = useState({
-    //     newSkill: ''
-    // })
+    const [formData, setFormData] = useState({
+        title: '',
+        company: '',
+        description: '',
+        from: '',
+        to: ''
+    })
 
-    // const {newSkill} = formData;
+    const {title, company, description, from, to} = formData;
 
-    // const onChange = e => setFormData({...formData, [e.target.name]: e.target.value})
+    const onChange = e => setFormData({...formData, [e.target.name]: e.target.value})
 
-    // const onSubmit = async e =>{
-    //     e.preventDefault();
+    const onSubmit = async e =>{
+        e.preventDefault();
         
-    //     addSkill(newSkill);
-    // }
+        addExperience(title, company, description, from, to);
+    }
 
 
     return(
@@ -36,23 +43,27 @@ const EditExperience = ({getCurrentProfile, auth: {user}, profile: {profile}}) =
                 {profile.experience.map(exp => (
                     <div key={exp._id} className='experience-display' >
                         <div id='delete-skill'>
-                            <span className='delete-btn'>X</span>
+                            <span className='delete-btn' onClick={() => deleteExperience(exp._id)}>X</span>
                         </div>
                         <div>
                             <h1>{exp.title}</h1>
                             <h1>{exp.company}</h1>
-                            <h1>{exp.desc}</h1>
-                            <h1>{exp.from}</h1>
-                            <h1>{exp.to}</h1>
+                            <p>{exp.description}</p>
+                            <p><Moment format='YYYY/MM/DD'>{moment.utc(exp.from)}</Moment></p>
+                            <p><Moment format='YYYY/MM/DD'>{moment.utc(exp.to)}</Moment></p>
                         </div>
                         
                     </div>
                 ))}
             </div>
 
-            <form className='skill-form-container' >
-                    <h1>Add Skill</h1>
-                    <input  name=''  placeholder='Add ' type='text'/>
+            <form className='skill-form-container' onSubmit={(e) => onSubmit(e)}>
+                    <h1>Add New Experience</h1>
+                    <input  name='title'  placeholder='Add Job Title' type='text' value={title} onChange={e => onChange(e)}/>
+                    <input  name='company'  placeholder='Add Company' type='text' value={company} onChange={e => onChange(e)}/>
+                    <input  name='description'  placeholder='Add Description' type='text' value={description} onChange={e => onChange(e)}/>
+                    <input  name='from'  placeholder='From YYYY/MM/DD' type='text' value={from} onChange={e => onChange(e)}/>
+                    <input  name='to'  placeholder='To YYYY/MM/DD' type='text' value={to} onChange={e => onChange(e)}/>
                     <input type='submit' value='Submit'/>
             </form>
     </div>
@@ -71,4 +82,4 @@ const mapStateToProps = state =>({
     profile: state.profile
 })
 
-export default connect(mapStateToProps, {getCurrentProfile})(EditExperience);
+export default connect(mapStateToProps, {getCurrentProfile, addExperience, deleteExperience})(EditExperience);

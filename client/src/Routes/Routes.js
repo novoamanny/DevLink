@@ -5,6 +5,7 @@ import Login from '../components/Login/Login';
 import DashBoard from '../components/Layout/Dashboard/Dashboard';
 import EditSkills from '../components/Layout/Dashboard/Skills/EditSkills';
 import EditExperience from '../components/Layout/Dashboard/Experience/EditExperience';
+import EditEducation from '../components/Layout/Dashboard/Education/EditEducation';
 import PrivateRoute from './PrivateRoute';
 
 // Need to add Dashboard route PRIVATE
@@ -18,6 +19,7 @@ const Routes = () => {
           <PrivateRoute exact path='/dashboard' component={DashBoard}/>
           <PrivateRoute exact path='/edit/skills' component={EditSkills} />
           <PrivateRoute exact path='/edit/experience' component={EditExperience}/>
+          <PrivateRoute exact path='/edit/education' component={EditEducation}/>
         </Switch>
       </section>
     );
