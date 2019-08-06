@@ -1,19 +1,27 @@
-import React, {Fragment, useEffect} from 'react';
+import React, {Fragment, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 import {setAlert} from '../../../actions/alert';
 import {getCurrentProfile} from '../../../actions/profile';
+import {addPost} from '../../../actions/post';
 
 
 import Spinner from '../Spinner/Spinner';
 import Experience from './Experience/Experience';
 import Education from './Education/Education';
 import Skills from './Skills/Skills';
+import Posts from './Posts/Posts';
 import './Dashboard.css';
 
 
-const Dashboard = ({setAlert, getCurrentProfile, auth: { user },profile: { profile, loading }}) =>{
+const Dashboard = ({setAlert, getCurrentProfile, addPost, auth: { user },profile: { profile, loading }}) =>{
+
+
+    // Profile page needs work -- sepate getPosts into Profile/Post.js
+    // Finish retrieveing information for Profile
+
+    // Delete Account Feature should be added
 
     
     
@@ -21,8 +29,18 @@ const Dashboard = ({setAlert, getCurrentProfile, auth: { user },profile: { profi
         
       getCurrentProfile();
       
-    })
+      
+    },[getCurrentProfile])
+
     
+
+    const [text, setText] = useState('');
+
+    const onSubmit = async e =>{
+        e.preventDefault();
+        addPost({text});
+        setText('');
+    }
 
     return loading && profile === null ? <Spinner/> : (
 
@@ -43,6 +61,7 @@ const Dashboard = ({setAlert, getCurrentProfile, auth: { user },profile: { profi
                         <div id='user-details'>
                             <h1>Hello, {user && user.name}</h1>
                             <p>status: {profile && profile.status}</p>
+                            <Link to={console.log(user._id)}>View Profile</Link>
                         </div>
                     </div>
 
@@ -76,12 +95,13 @@ const Dashboard = ({setAlert, getCurrentProfile, auth: { user },profile: { profi
 
                 {/* right */}
                 <div id='block-container-right'>
-                    <div id='blog-container'>
-                        <textarea/>
-                    </div>
+                    <form id='blog-container' onSubmit={(e) => onSubmit(e)}>
+                        <textarea name='text' type='text' cols='30' rows='5' placeholder='Create A Post' value={text} onChange={e => setText(e.target.value)} required/>
+                        <input type='submit' value='Submit'/>
+                    </form>
 
                     <div id='feed-container'>
-                        <h1>No Post yet...</h1>
+                        <Posts/>
                     </div>
 
                 </div>
@@ -94,16 +114,20 @@ const Dashboard = ({setAlert, getCurrentProfile, auth: { user },profile: { profi
 
 Dashboard.propTypes = {
     getCurrentProfile: PropTypes.func.isRequired,
+    
+    addPost: PropTypes.func.isRequired,
     // deleteAccount: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
-    profile: PropTypes.object.isRequired
+    profile: PropTypes.object.isRequired,
+    
 }
 
 
 const mapStateToProps = state => ({
     auth: state.auth,
-    profile: state.profile
+    profile: state.profile,
+    
 });
 
 
-export default connect(mapStateToProps, {setAlert, getCurrentProfile})(Dashboard);
+export default connect(mapStateToProps, {setAlert, getCurrentProfile, addPost})(Dashboard);

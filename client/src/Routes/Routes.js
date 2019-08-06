@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Register from '../components/Register/Register';
 import Login from '../components/Login/Login';
 import DashBoard from '../components/Layout/Dashboard/Dashboard';
+import Profile from '../components/Layout/Profile/Profile';
 import EditSkills from '../components/Layout/Dashboard/Skills/EditSkills';
 import EditExperience from '../components/Layout/Dashboard/Experience/EditExperience';
 import EditEducation from '../components/Layout/Dashboard/Education/EditEducation';
@@ -20,6 +21,7 @@ const Routes = () => {
           <PrivateRoute exact path='/edit/skills' component={EditSkills} />
           <PrivateRoute exact path='/edit/experience' component={EditExperience}/>
           <PrivateRoute exact path='/edit/education' component={EditEducation}/>
+          <PrivateRoute exact path='/profile/:id' component={Profile}/>
         </Switch>
       </section>
     );
