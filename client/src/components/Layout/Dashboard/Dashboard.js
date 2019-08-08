@@ -98,13 +98,22 @@ const Dashboard = ({setAlert, getCurrentProfile, addPost, auth: { user },profile
                 {/* right */}
                 <div id='block-container-right'>
                     <form id='blog-container' onSubmit={(e) => onSubmit(e)}>
-                        <textarea name='text' type='text' cols='30' rows='5' placeholder='Create A Post' value={text} onChange={e => setText(e.target.value)} required/>
-                        <input type='submit' value='Submit'/>
+                        <div id='post-input-container'>
+                            <div id='textarea-container'>
+                                <textarea name='text' type='text' cols='30' rows='5' placeholder='Create A Post' value={text} onChange={e => setText(e.target.value)} required/>
+                            </div>
+                            <div id='submit-post-btn'>
+                                <input type='submit' value='Submit'/>
+                            </div>
+                        </div>
                     </form>
 
                     <div id='feed-container'>
-                        <Posts/>
+                        <div id='post-feed'>
+                            <Posts/>
+                        </div>
                     </div>
+                    
 
                 </div>
 

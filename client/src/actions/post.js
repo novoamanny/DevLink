@@ -35,6 +35,24 @@ export const getPosts = () => async dispatch =>{
     }
 }
 
+
+// Get Post
+export const getPost = id => async dispatch=>{
+    try{
+        const res = await axios.get(`http://localhost:5000/api/posts/${id}`)
+        console.log(res.data);
+        dispatch({
+            type: GET_POST,
+            payload: res.data
+        })
+    }catch(err){
+        dispatch({
+            type: POST_ERROR,
+            payload: ({msg: err.response.statusText, status: err.response.status})
+        })
+    }
+}
+
 // Get User Posts
 export const getUserPosts = () => async dispatch =>{
     try{

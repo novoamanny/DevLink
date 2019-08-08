@@ -1,0 +1,11 @@
+#post-comment-input{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+#textarea-container-comments, #submit-post-btn-comments{
+    width: 100%;
+}
+

@@ -1,0 +1,57 @@
+:root{
+    --primary: #49a34c;
+    --secondary: #17a2b8;
+    --lightBlue: #61dafb;
+    --dark: #343a40;
+    --light: #f4f4f4;
+    --danger: #dc3545;
+    --success: #28a745;
+}
+
+
+#dash-post-container{
+    
+    border-bottom: solid 1px var(--light);
+}
+
+#dash-post-container h2{
+    color: var(--light);
+}
+
+#post-btns{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#post-info{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#post-info p{
+    margin: 10px;
+    font-size: 14px;
+}
+
+
+
+#post-btns p{
+    font-size: 20px;
+    margin: 10px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#post-btns p:hover{
+    color: var(--primary);
+}
+
+
+#comments-slider{
+    background: var(--light);
+    overflow: hidden;
+    transition: max-height 0.3s;
+    max-height: 0;
+}
+

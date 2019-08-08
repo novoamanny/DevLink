@@ -15,7 +15,15 @@ const PostsProfile = ({getUserPosts, auth:{user}, post: {myPosts, loading}}) =>{
 
     return loading && myPosts === null ? <Spinner/> : <div>{myPosts.map(post =>{
         return(
-            <h1 key={post._id}>{post.text}</h1>
+            <div key={post._id}>
+                <h1>{post.text}</h1>
+                {post.comments.map(comment =>(
+                    <div key={comment._id}>
+                        <p>{comment.text}</p>
+                        <p>{comment.name}</p>
+                    </div>
+                ))}
+            </div>
         )
     })}
         </div>  
