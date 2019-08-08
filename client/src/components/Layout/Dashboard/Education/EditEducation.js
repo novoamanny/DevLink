@@ -81,6 +81,8 @@ const EditEducation = ({getCurrentProfile, addEducation, deleteEducation, auth: 
 
 EditEducation.propTypes = {
     getCurrentProfile: PropTypes.func.isRequired,
+    addEducation: PropTypes.func.isRequired,
+    deleteEducation: PropTypes.func.isRequired,
     
     auth: PropTypes.object.isRequired,
     profile: PropTypes.object.isRequired

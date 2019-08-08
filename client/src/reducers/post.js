@@ -1,5 +1,6 @@
 import {
     GET_POSTS,
+    GET_USER_POSTS,
     GET_POST,
     POST_ERROR,
     UPDATE_LIKES,
@@ -11,6 +12,7 @@ import {
 
 const initialState = {
     posts: [],
+    myPosts: [],
     post: null,
     loading: true, 
     error: []
@@ -33,6 +35,12 @@ export default (state = initialState, action) =>{
         post: payload,
         loading: false
       };
+    case GET_USER_POSTS:
+      return{
+        ...state,
+        myPosts: payload,
+        loading: false
+      }
     case ADD_POST:
       return {
         ...state,

@@ -59,6 +59,28 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
+
+// @route     GET api/posts/me
+// @desc      Get all posts
+// @access    Private
+router.get('/me', auth, async (req, res) =>{
+  try{
+    const posts = await Post.find({user: req.user.id});
+    
+    if(!posts){
+      return res.status(404).json({msg: 'User Posts not found'});
+    }
+
+    res.json(posts);
+  }catch(err){
+    console.error(err.message);
+    if(err.kind === 'ObjectId'){
+      return res.status(404).json({msg: 'User Posts not found'})
+    }
+    res.status(500).send('Server Error');
+  }
+})
+
 // @route    GET api/posts/:id
 // @desc     Get post by ID
 // @access   Private
@@ -113,6 +135,7 @@ router.delete('/:id', auth, async (req, res) => {
 // @access   Private
 router.put('/like/:id', auth, async (req, res) => {
   try {
+    console.log(req.params)
     const post = await Post.findById(req.params.id);
 
     // Check if the post has already been liked
@@ -178,6 +201,7 @@ router.post(
     ]
   ],
   async (req, res) => {
+    console.log(req.body);
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });

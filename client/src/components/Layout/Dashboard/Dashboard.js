@@ -21,6 +21,8 @@ const Dashboard = ({setAlert, getCurrentProfile, addPost, auth: { user },profile
     // Profile page needs work -- sepate getPosts into Profile/Post.js
     // Finish retrieveing information for Profile
 
+    // Implement Comment and Like features
+
     // Delete Account Feature should be added
 
     
@@ -61,7 +63,7 @@ const Dashboard = ({setAlert, getCurrentProfile, addPost, auth: { user },profile
                         <div id='user-details'>
                             <h1>Hello, {user && user.name}</h1>
                             <p>status: {profile && profile.status}</p>
-                            <Link to={console.log(user._id)}>View Profile</Link>
+                            <Link to={`profile/:${user._id}`}>View Profile</Link>
                         </div>
                     </div>
 
