@@ -1,27 +1,36 @@
-import React, {useEffect}from 'react';
+import React, {useEffect, useState}from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment';
 import moment from 'moment';
 
-import {getPosts, addLikes, unlike} from '../../../../actions/post';
+import {getPosts, addLikes, unlike, addComment} from '../../../../actions/post';
 import Comments from './Comments/Comments';
 import Spinner from '../../Spinner/Spinner';
 
 import './Posts.css'
 
 
-const Posts = ({getPosts, addLikes, unlike, auth:{user}, post: {posts, loading}}) =>{
+const Posts = ({getPosts, addLikes, unlike, addComment, auth:{user}, post: {posts, loading}}) =>{
     useEffect(() =>{
         getPosts();
     },[getPosts])
 
 
-    const slideHandle = () =>{
-        document.getElementById('comments-slider').style.maxHeight = '30em';
+    
+
+
+    const slideHandle = (sliderID) =>{
+        
+        document.getElementById(sliderID).classList.contains('active') 
+            ? document.getElementById(sliderID).classList.remove('active') 
+            : document.getElementById(sliderID).classList.add('active');
+        
+        
+        
     }
 
-    return loading && posts === null ? <Spinner/> : <div>{posts.map(post =>{
+    return loading && posts === null ? <Spinner/> : <div id='feed-container'>{posts.map(post =>{
         return(
             <div key={post._id} id='dash-post-container'>
                 <h2>{post.text}</h2>
@@ -32,10 +41,14 @@ const Posts = ({getPosts, addLikes, unlike, auth:{user}, post: {posts, loading}}
                 <div id='post-btns'>
                     <p onClick={() => addLikes(post._id)}>Like</p>
                     <p onClick={() => unlike(post._id)}>Unlike</p>
-                    <p onClick={() => slideHandle()}>Comments</p>
+                    
+                    <p id='hover-btn' onClick={() => slideHandle(`comments-slider-${post._id}`)}>Comments</p>
+                    
                 </div>
-                <div id='comments-slider'>
-                    <Comments postID={post._id}/>
+
+                <div id={`comments-slider-${post._id}`} className='comments-slider'>
+                    
+                    <Comments id='comments-tag' postID={post._id}/>
                 </div>
                 
             </div>
@@ -48,6 +61,7 @@ const Posts = ({getPosts, addLikes, unlike, auth:{user}, post: {posts, loading}}
 Posts.propTypes = {
     getPosts: PropTypes.func.isRequired,
     addLikes: PropTypes.func.isRequired,
+    addComment: PropTypes.func.isRequired,
     unlike : PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
     post: PropTypes.object.isRequired
@@ -58,4 +72,4 @@ const mapStateToProps = state =>({
     post: state.post
 })
 
-export default connect(mapStateToProps, {getPosts, addLikes, unlike})(Posts);
+export default connect(mapStateToProps, {getPosts, addLikes, unlike, addComment})(Posts);
