@@ -1,0 +1,104 @@
+:root{
+    --primary: #49a34c;
+    --secondary: #17a2b8;
+    --lightBlue: #61dafb;
+    --dark: #343a40;
+    --light: #f4f4f4;
+    --danger: #dc3545;
+    --success: #28a745;
+}
+
+.profile-UI{
+    background: var(--dark);
+    padding: 120px 20px;
+}
+
+.profile-info{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center
+}
+.user-info{
+    width: 100%;
+    background: var(--primary);
+}
+.user-details h1, .user-details p{
+    text-align: center;
+    color: var(--light);
+}
+.detail-block{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.detail-block p{
+    margin: 20px;
+}
+.profile-img{
+    margin: 20px;
+    padding: 140px;
+    background: var(--dark);
+    border-radius: 50%;
+}
+.user-skills{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    border-top: 3px solid var(--dark);
+    background: var(--primary);
+    width: 100%;
+}
+
+.user-skills p, .user-skills h2{
+    text-align: center;
+    color: var(--light);
+}
+
+.user-skills p{
+    margin: 30px 0;
+    
+}
+
+.profile-edu-exp{
+    display: flex;
+    
+    background: var(--primary);
+    
+}
+.profile-exp{
+    width: 50%;
+    border: 2px solid var(--dark);
+    border-left: none;
+}
+.profile-exp  h1{
+    color: var(--light);
+    text-align: center;
+}
+.profile-edu{
+    width: 50%;
+    border: 2px solid var(--dark);
+    border-right: none;
+}
+.profile-edu h1{
+    color: var(--light);
+    text-align: center;
+    
+}
+.exp-container-profile{
+    border-top: 1px solid var(--dark);
+    padding: 10px 0;
+}
+
+.exp-container-profile h2, .exp-container-profile p{
+    color: var(--light);
+    text-align: center;
+}
+
+.edu-container-profile{
+    border-top: 1px solid var(--dark);
+    padding: 10px 0;
+}
+
+.edu-container-profile h2, .edu-container-profile p{
+    color: var(--light);
+    text-align: center;
+}

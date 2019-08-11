@@ -64,7 +64,7 @@ const Dashboard = ({setAlert, getCurrentProfile, addPost, auth: { user },profile
                             <h1>Hello, {user && user.name}</h1>
                             <p>status: {profile && profile.status}</p>
                             <div>
-                                <Link className='view-profile-link' to={`profile/:${user._id}`}>View Profile</Link>
+                                <Link className='view-profile-link' to={`profile/me/:${user._id}`}>View Profile</Link>
                             </div>
                         </div>
                     </div>

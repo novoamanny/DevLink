@@ -21,7 +21,7 @@ const Routes = () => {
           <PrivateRoute exact path='/edit/skills' component={EditSkills} />
           <PrivateRoute exact path='/edit/experience' component={EditExperience}/>
           <PrivateRoute exact path='/edit/education' component={EditEducation}/>
-          <PrivateRoute exact path='/profile/:id' component={Profile}/>
+          <PrivateRoute exact path='/profile/me/:id' component={Profile}/>
         </Switch>
       </section>
     );

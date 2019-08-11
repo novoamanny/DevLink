@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 import {getUserPosts} from '../../../../actions/post';
 import Spinner from '../../Spinner/Spinner';
 
+import './PostProfile.css';
+
 
 const PostsProfile = ({getUserPosts, auth:{user}, post: {myPosts, loading}}) =>{
     useEffect(() =>{
@@ -13,12 +15,13 @@ const PostsProfile = ({getUserPosts, auth:{user}, post: {myPosts, loading}}) =>{
 
     
 
-    return loading && myPosts === null ? <Spinner/> : <div>{myPosts.map(post =>{
+    return loading && myPosts === null ? <Spinner/> : <div className='post-profile-container'>{myPosts.map(post =>{
         return(
-            <div key={post._id}>
-                <h1>{post.text}</h1>
+            <div key={post._id} className='post-profile'>
+                <p>{post.text}</p>
+                <p>{post.name}</p>
                 {post.comments.map(comment =>(
-                    <div key={comment._id}>
+                    <div key={comment._id} className='post-profile-comments'>
                         <p>{comment.text}</p>
                         <p>{comment.name}</p>
                     </div>

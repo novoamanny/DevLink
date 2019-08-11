@@ -1,0 +1,27 @@
+:root{
+    --primary: #49a34c;
+    --secondary: #17a2b8;
+    --lightBlue: #61dafb;
+    --dark: #343a40;
+    --dark2: #24282b;
+    --light: #f4f4f4;
+    --danger: #dc3545;
+    --success: #28a745;
+}
+.post-profile-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.post-profile{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center
+}
+.post-profile-comments{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    background: var(--dark2);
+}
