@@ -17,7 +17,7 @@ import './Comments.css';
 
 
 
-const Comments = ({getPosts, addComment, post:{posts, loading}, postID}) =>{
+const Comments = ({getPosts, addComment, auth:{user}, post:{posts, loading}, postID}) =>{
 
     useEffect(() =>{
         getPosts();
@@ -34,7 +34,7 @@ const Comments = ({getPosts, addComment, post:{posts, loading}, postID}) =>{
     }
 
     return loading && posts === null ? <Spinner/> :
-    <div>
+    <div id='comment-section'>
         
         <form id='post-comment-input' onSubmit={(e) => onSubmit(e)}>
                 
@@ -45,12 +45,18 @@ const Comments = ({getPosts, addComment, post:{posts, loading}, postID}) =>{
                     <input type='submit' value='Submit'/>
                 </div>
         </form>
+
         
+        <div >
         {posts.map(post =>{
             if(post._id === postID){
                 return post.comments.map(comment =>(
                     
                     <div key={comment._id} id='comments-container'>
+                        <div id='delete-comment'>
+                            {user._id === comment.user && <i className='delete-comment-btn'>X</i>}
+                        </div>
+
                         <div id='comment' style={{width: '100%'}}>
                             <h3>{comment.text}</h3>
                         </div>
@@ -62,7 +68,7 @@ const Comments = ({getPosts, addComment, post:{posts, loading}, postID}) =>{
                 ))
             }
         })}
-        
+        </div>
     </div>
 }
 

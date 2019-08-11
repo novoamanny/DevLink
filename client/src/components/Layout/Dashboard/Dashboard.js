@@ -63,7 +63,9 @@ const Dashboard = ({setAlert, getCurrentProfile, addPost, auth: { user },profile
                         <div id='user-details'>
                             <h1>Hello, {user && user.name}</h1>
                             <p>status: {profile && profile.status}</p>
-                            <Link to={`profile/:${user._id}`}>View Profile</Link>
+                            <div>
+                                <Link className='view-profile-link' to={`profile/:${user._id}`}>View Profile</Link>
+                            </div>
                         </div>
                     </div>
 
@@ -73,7 +75,7 @@ const Dashboard = ({setAlert, getCurrentProfile, addPost, auth: { user },profile
                         <div id='skills'>
                             
                             <h1 id='skills-title'>Skills</h1>
-                            { profile.skills ? <Skills skills={profile.skills}/> : <h1 id='noSkills-alert'>No Skills...</h1>}
+                            { profile.skills === '' || null || profile.skills === undefined || profile.skills.length === 0 ? <Link className='na-link' to='edit/skills'>Add Skills</Link> : <Skills skills={profile.skills}/>}
                             
                             
                         </div>
@@ -82,13 +84,15 @@ const Dashboard = ({setAlert, getCurrentProfile, addPost, auth: { user },profile
 
                         <div id='experience'>
                             <h1 id='experience-title'>Experience</h1>
-                            { profile.experience ? <Experience experience={profile.experience}/> : <h1 id='noExperience-alert'>No Experience...</h1>}
+                            { profile.experience === '' || null || profile.experience === undefined || profile.experience.length === 0 ? <Link className='na-link' to='edit/experience'>Add Experience</Link> : <Experience experience={profile.experience}/>}
                             
                         </div>
 
+                        {console.log(profile.experience)}
+
                         <div id='education'>
                             <h1 id='education-title'>Education</h1>
-                            { profile.education ? <Education education={profile.education}/> : <h1 id='noEducation-alert'>No Education...</h1>}
+                            { profile.education === '' || null || profile.education === undefined || profile.education.length === 0 ? <Link className='na-link' to='edit/education'>Add Education</Link> : <Education education={profile.education}/>}
                             
                         </div>
 

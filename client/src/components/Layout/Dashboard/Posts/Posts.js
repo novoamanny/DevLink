@@ -33,7 +33,9 @@ const Posts = ({getPosts, addLikes, unlike, addComment, auth:{user}, post: {post
     return loading && posts === null ? <Spinner/> : <div id='feed-container'>{posts.map(post =>{
         return(
             <div key={post._id} id='dash-post-container'>
-                <h2>{post.text}</h2>
+                <div className='post'>
+                    {post.text.split('\n').map((par, index) => <p key={`post-${post._id}-${index}`} className='post-paragraph'>{par}</p>)}
+                </div>
                 <div id='post-info'>
                     <p>{post.name}</p>
                     <p><Moment format='YYYY/MM/DD'>{moment.utc(post.date)}</Moment></p>
@@ -43,6 +45,8 @@ const Posts = ({getPosts, addLikes, unlike, addComment, auth:{user}, post: {post
                     <p onClick={() => unlike(post._id)}>Unlike</p>
                     
                     <p id='hover-btn' onClick={() => slideHandle(`comments-slider-${post._id}`)}>Comments</p>
+
+                    {user._id === post.user && <p className='delete-post-btn'>Delete</p>}
                     
                 </div>
 

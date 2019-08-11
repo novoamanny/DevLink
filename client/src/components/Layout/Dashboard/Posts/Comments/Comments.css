@@ -21,6 +21,11 @@
     margin: 15px 0;
 }
 
+#comment-section{
+    
+    
+}
+
 #comments-container{
     display: flex;
     flex-wrap: wrap;
@@ -56,6 +61,22 @@
 #comment{
     padding: 10px;
     
+}
+
+#delete-comment{
+    margin-top: 10px;
+    margin-left: 550px;
+}
+
+.delete-comment-btn{
+    color: var(--danger);
+    cursor: pointer;
+    opacity: 0.7;
+    font-size: 17px;
+}
+
+.delete-comment-btn:hover{
+    opacity: 1;
 }
 
 #close-slider-btn{
